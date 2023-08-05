@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "minionsweep"
+version = "0.1.0"
+description = ""
+authors = ["mojoee <47809126+mojoee@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pygame = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
