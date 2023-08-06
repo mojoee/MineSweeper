@@ -28,7 +28,18 @@ class Game():
                            paddingL=self.paddingH, paddingR=self.paddingV)
 
         self.field.draw(self.screen)
-
+        for tile in self.field.sprites():
+            bombs = self.count_bombs(tile.rect.x, tile.rect.y)
+            tile.add_bombs(bombs)
 
     def game_over(self):
         self.alive = False
+
+    def count_bombs(self, x, y):
+        count = 0
+        for sprite in self.minions.sprites():
+            if sprite.rect.x >= x and sprite.rect.x <= x+16:
+                if sprite.rect.y >= y and sprite.rect.y <= y+16:
+                    count += 1
+        return count
+
