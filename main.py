@@ -1,21 +1,28 @@
 # Example file showing a basic pygame "game loop"
 import pygame
+from config import Config
+from src.game import Game
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
+screen = pygame.display.set_mode(Config.screenResolution)
 clock = pygame.time.Clock()
 running = True
+config = Config()
 
-while running:
+#game setup
+game = Game(config.fieldSize, screen)
+
+while game.alive:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            game.game_over()
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    screen.fill(Config.BGColor)
+    game.field.draw(screen)
 
     # RENDER YOUR GAME HERE
 
